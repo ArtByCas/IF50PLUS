@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Fasting Tracker</title>
+</head>
+<body style="font-family:sans-serif; max-width:600px; margin:auto; padding:1em;">
+
+  <h1>🕘 Fasting Tracker</h1>
+  <p><strong>Start Time:</strong> <span id="startTime">Not started</span></p>
+  <p><strong>End Time:</strong> <span id="endTime">Not ended</span></p>
+  <p><strong>Elapsed:</strong> <span id="elapsed">0 hrs</span></p>
+
+  <button onclick="startFast()">Start Fast</button>
+  <button onclick="endFast()">End Fast</button>
+
+  <script>
+    let start = null;
+    let end = null;
+
+    function startFast() {
+      start = new Date();
+      document.getElementById('startTime').textContent = start.toLocaleTimeString();
+      document.getElementById('elapsed').textContent = '0 hrs';
+    }
+
+    function endFast() {
+      end = new Date();
+      document.getElementById('endTime').textContent = end.toLocaleTimeString();
+      const diffMs = end - start;
+      const hours = (diffMs / (1000 * 60 * 60)).toFixed(2);
+      document.getElementById('elapsed').textContent = `${hours} hrs`;
+    }
+  </script>
+
+</body>
+</html>
